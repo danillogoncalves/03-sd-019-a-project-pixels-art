@@ -1,3 +1,8 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
 .color, .pixel {
     border: 1px solid black;
     height: 40px;
@@ -7,7 +12,10 @@
 .pixel {
     background-color: white;
 }
-
+/* .line {
+    font-size: 0;
+}
+ */
 .black {
     background-color: black;
 }
