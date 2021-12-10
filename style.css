@@ -1,8 +1,3 @@
-* {
-    margin: 0;
-    padding: 0;
-    border: 0;
-}
 .color, .pixel {
     border: 1px solid black;
     height: 40px;
@@ -12,22 +7,23 @@
 .pixel {
     background-color: white;
 }
-/* .line {
-    font-size: 0;
+
+.line {
+    height: 40px;
 }
- */
-.black {
+
+#color1 {
     background-color: black;
 }
 
-.red {
+#color2 {
     background-color: red;
 }
 
-.blue {
+#color3 {
     background-color: blue;
 }
 
-.green {
+#color4 {
     background-color: green;
 }
