@@ -28,6 +28,14 @@ for (let i = 0; i < pixels.length; i += 1) {
     })
 }
 
+const buttonClearBoard = document.querySelector('#clear-board');
+buttonClearBoard.addEventListener('click', clearBoard);
+function clearBoard() {
+    for (let i = 0; i < pixels.length; i += 1) {
+        pixels[i].removeAttribute('id');
+    }
+}
+
 
 
 // Eu tive ajuda do Lucas Martim Sênior na area de programação Front-End
