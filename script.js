@@ -12,12 +12,14 @@ for (let l = 0; l < linha; l += 1) {
     }
 }
 
+// Mentoria Roberval Filho
+function markColorPalette(e) {
+    document.querySelector('.selected').classList.remove('selected');
+    e.target.classList.add('selected');
+}
 const colorPalette = document.querySelectorAll('.color');
 for (let i = 0; i < colorPalette.length; i += 1) {
-    colorPalette[i].addEventListener('click', function(e) {
-        document.querySelector('.selected').classList.remove('selected');
-        e.target.classList.add('selected');
-    })
+    colorPalette[i].addEventListener('click', markColorPalette)
 }
 
 const pixels = document.querySelectorAll('.pixel');
