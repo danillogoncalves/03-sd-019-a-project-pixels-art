@@ -38,8 +38,6 @@ function clearBoard() {
     }
 }
 
-
-
 // Eu tive ajuda do Lucas Martim Sênior na area de programação Front-End
 // const pixels = document.querySelectorAll('.pixel');
 // for (let i = 0; i < pixels.length; i += 1) {
