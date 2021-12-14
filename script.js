@@ -1,43 +1,92 @@
-let linha = 5
-let coluna = 5
-let pixelBoard = document.querySelector('#pixel-board');
-for (let l = 0; l < linha; l += 1) {
-    const criaLinha = document.createElement('div');
-    criaLinha.classList.add('line');
-    pixelBoard.appendChild(criaLinha);
-    for (let c = 0; c < coluna; c += 1) {
-        const criaColuna = document.createElement('div');
-        criaColuna.classList.add('pixel');
-        criaLinha.appendChild(criaColuna);
+const buttonGenerateBoard = document.querySelector('#generate-board');
+generateBoard();
+function generateBoard () {
+    let linha = 5;
+    let coluna = 5;
+    let pixelBoard = document.querySelector('#pixel-board');
+    for (let l = 0; l < linha; l += 1) {
+        const criaLinha = document.createElement('div');
+        criaLinha.classList.add('line');
+        pixelBoard.appendChild(criaLinha);
+        for (let c = 0; c < coluna; c += 1) {
+            const criaColuna = document.createElement('div');
+            criaColuna.classList.add('pixel');
+            criaColuna.addEventListener('click', paintPixel);
+            criaLinha.appendChild(criaColuna);
+        }
     }
 }
+let color1 = document.querySelector('#color1').style.backgroundColor = 'black';
+let color2 = document.querySelector('#color2').style.backgroundColor = 'red';
+let color3 = document.querySelector('#color3').style.backgroundColor = 'blue';
+let color4 = document.querySelector('#color4').style.backgroundColor = 'green';
 
 // Mentoria Roberval Filho
-function markColorPalette(e) {
-    document.querySelector('.selected').classList.remove('selected');
-    e.target.classList.add('selected');
-}
 const colorPalette = document.querySelectorAll('.color');
 for (let i = 0; i < colorPalette.length; i += 1) {
     colorPalette[i].addEventListener('click', markColorPalette)
 }
 
-const pixels = document.querySelectorAll('.pixel');
-for (let i = 0; i < pixels.length; i += 1) {
-    pixels[i].addEventListener('click', function(e) {
-        let id = document.querySelector('.selected').id;
-        e.target.id = id;
-    })
+function markColorPalette(e) {
+    document.querySelector('.selected').classList.remove('selected');
+    e.target.classList.add('selected');
+}
+
+function paintPixel (e) {
+    const newColor = document.querySelector('.selected').style.backgroundColor;
+    e.target.style.backgroundColor = newColor;
 }
 
 const buttonClearBoard = document.querySelector('#clear-board');
 buttonClearBoard.addEventListener('click', clearBoard);
 function clearBoard() {
+    const pixels = document.querySelectorAll('.pixel');
     for (let i = 0; i < pixels.length; i += 1) {
-        pixels[i].removeAttribute('id');
+        pixels[i].style.background = 'white';
+    }
+}
+function newGenerateBoard() {
+    const heightWidth = parseInt(document.querySelector('#board-size').value);
+    const inputEmpty = document.querySelector('#board-size').value;
+    if (heightWidth < 5 || inputEmpty === '') {
+        alert('Board inválido!');
+    } else if (heightWidth > 50) {
+        document.querySelector('#board-size').value = '50';
+        document.querySelector('#pixel-board').innerHTML = '';
+        let linha = 50;
+        let coluna = 50;
+        let pixelBoard = document.querySelector('#pixel-board');
+        for (let l = 0; l < linha; l += 1) {
+            const criaLinha = document.createElement('div');
+            criaLinha.classList.add('line');
+            pixelBoard.appendChild(criaLinha);
+            for (let c = 0; c < coluna; c += 1) {
+                const criaColuna = document.createElement('div');
+                criaColuna.classList.add('pixel');
+                criaColuna.addEventListener('click', paintPixel);
+                criaLinha.appendChild(criaColuna);
+            }
+        }
+    } else {
+        document.querySelector('#pixel-board').innerHTML = '';
+        let linha = parseInt(document.querySelector('#board-size').value);
+        let coluna = parseInt(document.querySelector('#board-size').value);
+        let pixelBoard = document.querySelector('#pixel-board');
+        for (let l = 0; l < linha; l += 1) {
+            const criaLinha = document.createElement('div');
+            criaLinha.classList.add('line');
+            pixelBoard.appendChild(criaLinha);
+            for (let c = 0; c < coluna; c += 1) {
+                const criaColuna = document.createElement('div');
+                criaColuna.classList.add('pixel');
+                criaColuna.addEventListener('click', paintPixel);
+                criaLinha.appendChild(criaColuna);
+            }
+        }
     }
 }
 
+buttonGenerateBoard.addEventListener('click', newGenerateBoard)
 // Eu tive ajuda do Lucas Martim Sênior na area de programação Front-End
 // const pixels = document.querySelectorAll('.pixel');
 // for (let i = 0; i < pixels.length; i += 1) {
@@ -46,42 +95,3 @@ function clearBoard() {
 // function pintarPixel() {
 //     this.classList.add('nao');
 // }
-
-
-// const blackPalette = document.querySelector('.black');
-// const redPalette = document.querySelector('.red');
-// const bluePalette = document.querySelector('.blue');
-// const greenPalette = document.querySelector('.green');
-
-// blackPalette.addEventListener('click', selectedPaletteBlack);
-// redPalette.addEventListener('click', selectedPaletteRed);
-// bluePalette.addEventListener('click', selectedPaletteBlue);
-// greenPalette.addEventListener('click', selectedPaletteGreen);
-
-
-// function selectedPaletteBlack() {
-//     blackPalette.classList.add('selected');
-//     redPalette.classList.remove('selected');
-//     bluePalette.classList.remove('selected');
-//     greenPalette.classList.remove('selected');
-// }
-// function selectedPaletteRed() {
-//     blackPalette.classList.remove('selected');
-//     redPalette.classList.add('selected');
-//     bluePalette.classList.remove('selected');
-//     greenPalette.classList.remove('selected');
-// }
-// function selectedPaletteBlue() {
-//     blackPalette.classList.remove('selected');
-//     redPalette.classList.remove('selected');
-//     bluePalette.classList.add('selected');
-//     greenPalette.classList.remove('selected');
-// }
-// function selectedPaletteGreen() {
-//     blackPalette.classList.remove('selected');
-//     redPalette.classList.remove('selected');
-//     bluePalette.classList.remove('selected');
-//     greenPalette.classList.add('selected');
-// }
-
-// const pixelBoard = document.querySelectorAll('#pixel-board');
