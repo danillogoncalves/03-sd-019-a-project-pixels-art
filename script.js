@@ -17,9 +17,9 @@ function generateBoard () {
     }
 }
 let color1 = document.querySelector('#color1').style.backgroundColor = 'black';
-let color2 = document.querySelector('#color2').style.backgroundColor = 'red';
-let color3 = document.querySelector('#color3').style.backgroundColor = 'blue';
-let color4 = document.querySelector('#color4').style.backgroundColor = 'green';
+let color2 = document.querySelector('#color2').style.backgroundColor = `rgb(${parseInt(Math.random()*256)}, ${parseInt(Math.random()*256)}, ${parseInt(Math.random()*256)})`;
+let color3 = document.querySelector('#color3').style.backgroundColor = `rgb(${parseInt(Math.random()*256)}, ${parseInt(Math.random()*256)}, ${parseInt(Math.random()*256)})`;
+let color4 = document.querySelector('#color4').style.backgroundColor = `rgb(${parseInt(Math.random()*256)}, ${parseInt(Math.random()*256)}, ${parseInt(Math.random()*256)})`;
 
 // Mentoria Roberval Filho
 const colorPalette = document.querySelectorAll('.color');
